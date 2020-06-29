@@ -20,3 +20,21 @@ promise
 
 /*********************************************************************/
 
+console.log('Hello World 1')
+
+const anyFunction = () => {
+  return (((Math.floor(Math.random() * 10)) % 2) === 0)
+}
+
+const resolveFunction = () => console.log('Success')
+const rejectFunction = () => console.log('Failure')
+
+const result = new Promise((res, rej) => {
+  setTimeout(() => (anyFunction() ? res() : rej()), 2000)
+})
+
+result.then(resolveFunction).catch(rejectFunction)
+
+console.log('Hello World 2')
+
+/*********************************************************************/
