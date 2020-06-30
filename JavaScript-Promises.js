@@ -13,7 +13,7 @@ var promise = new Promise((resolve, reject) => {
     reject(); 
   }
 }); 
-  
+
 promise
 	.then()
 	.catch(() => console.log(`Failed: Opps it's not same`));
@@ -63,8 +63,28 @@ let foods = food()
 
 foods
 	.then((value) => {console.log(value); return sweetdish()})
-	.then((value) => {console.log(value)})	
-	.catch((error) => console.log("Error: ", error)) 
+	.then((value) => {console.log(value)})
+	.catch((error) => console.log("Error: ", error))
 
 /*********************************************************************/
 
+const computer = new Promise((resolve, reject) => {
+	setTimeout(() => {
+		console.log("Turn on the computer")
+		resolve("Computer is turning on")
+	}, 5000)
+})
+
+const software = new Promise((resolve, reject) => {
+	setTimeout(() => {
+		console.log("Install the  software")
+		resolve("Software is installing now")
+	}, 6000)
+})
+
+computer
+	.then((value) => {console.log(value); return software})
+	.then((value) => {console.log(value)})
+	.catch((error) => console.log("Error: ", error))
+
+/*********************************************************************/
