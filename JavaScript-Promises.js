@@ -11,7 +11,7 @@ var promise = new Promise((resolve, reject) => {
     resolve(console.log(`Success: Yeah it's same`)); 
   } else { 
     reject(); 
-  } 
+  }
 }); 
   
 promise
@@ -38,3 +38,33 @@ result.then(resolveFunction).catch(rejectFunction)
 console.log('Hello World 2')
 
 /*********************************************************************/
+
+function food() {
+	const preparefood = new Promise((resolve, reject) => {
+		setTimeout(() => {
+			console.log("Preparing Food")
+			resolve("Food is Ready")
+		}, 3000)
+	})
+	return preparefood
+}
+
+function sweetdish() {
+	const preparesweetdish = new Promise((resolve, reject) => {
+		setTimeout(() => {
+			console.log("Preparing Sweet Dish")
+			resolve("Sweet Dish is Ready")
+		}, 4000)
+	})
+	return preparesweetdish
+}
+
+let foods = food()
+
+foods
+	.then((value) => {console.log(value); return sweetdish()})
+	.then((value) => {console.log(value)})	
+	.catch((error) => console.log("Error: ", error)) 
+
+/*********************************************************************/
+
